@@ -35,3 +35,8 @@ __screenshots__/
 
 # ESLint
 .eslintcache
+
+# Unplugin
+auto-imports.d.ts
+components.d.ts
+.eslintrc-auto-import.json
