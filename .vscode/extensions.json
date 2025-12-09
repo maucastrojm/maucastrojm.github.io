@@ -1,0 +1,9 @@
+{
+    "recommendations": [
+        "Vue.volar",
+        "bradlc.vscode-tailwindcss",
+        "dbaeumer.vscode-eslint",
+        "DavidAnson.vscode-markdownlint",
+        "letmaik.git-tree-compare"
+    ]
+}
