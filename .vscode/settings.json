@@ -54,11 +54,10 @@
     "*.js": "{*.test.js,*.spec.js,*.d.ts}",
     "*.ts": "{*.test.ts,*.spec.ts,*.d.ts}",
     "*.vue": "{*.test.vue,*.spec.vue}",
-    "package.json": ".eslintcache,package-lock.json,tsconfig.json,tsconfig.*.json,nuxt.config.*,vite.config.*,tailwind.config.*,drizzle.config.*,vitest.config.*,eslint.config.*,pnpm*",
+    "package.json": "components.d.ts,auto-imports.d.ts,components.json,.eslintrc-auto-import.json,.eslintcache,package-lock.json,tsconfig.json,tsconfig.*.json,nuxt.config.*,vite.config.*,tailwind.config.*,drizzle.config.*,vitest.config.*,eslint.config.*,pnpm*",
     ".env": ".env.*,env.*,.infisical.json,.npmrc,.nvmrc,.gitignore,.prettierrc,.gitattributes",
     "README.md": "CHANGELOG.md,CONTRIBUTING.md,LICENSE.md",
-    "Dockerfile": "docker-compose*.yml",
-    "auto-imports.d.ts": "components.d.ts,.eslintrc-auto-import.json"
+    "Dockerfile": "docker-compose*.yml"
   },
   "git.blame.editorDecoration.enabled": true,
   "git.blame.statusBarItem.enabled": true
