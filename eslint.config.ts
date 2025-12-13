@@ -5,6 +5,7 @@ import pluginVitest from '@vitest/eslint-plugin';
 import eslintPrettier from 'eslint-plugin-prettier/recommended';
 import globals from 'globals';
 import tseslint from 'typescript-eslint';
+import eslintPluginUnicorn from 'eslint-plugin-unicorn';
 
 export default defineConfigWithVueTs(
   {
@@ -14,16 +15,19 @@ export default defineConfigWithVueTs(
   globalIgnores(['**/dist/**', '**/dist-ssr/**', '**/coverage/**']),
   ...tseslint.configs.recommended,
   pluginVue.configs['flat/recommended'],
-  vueTsConfigs.recommended,
   eslintPrettier,
+  vueTsConfigs.recommended,
   {
+    ...eslintPluginUnicorn.configs.unopinionated,
     ...pluginVitest.configs.recommended,
     files: ['src/**/__tests__/*'],
     languageOptions: {
       globals: { ...globals.browser, ...globals.node },
     },
+    plugins: {
+      unicorn: eslintPluginUnicorn,
+    },
     rules: {
-      'vue/padding-line-between-blocks': ['off'],
       'vue/max-attributes-per-line': ['off'],
       'vue/first-attribute-linebreak': [
         'error',
@@ -51,6 +55,16 @@ export default defineConfigWithVueTs(
         },
       ],
       'vue/require-default-prop': ['off'],
+      'vue/padding-line-between-blocks': ['error', 'never'],
+      'unicorn/filename-case': [
+        'error',
+        {
+          case: 'camelCase',
+          ignore: ['\.vue', '\.d\.ts', '\.spec\.ts'],
+        },
+      ],
+      'unicorn/no-abusive-eslint-disable': ['off'],
+      'unicorn/prevent-abbreviations': ['off'],
     },
   },
 );
