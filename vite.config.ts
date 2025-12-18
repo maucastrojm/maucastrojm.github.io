@@ -12,7 +12,13 @@ export default defineConfig({
     vueDevTools(),
     tailwindcss(),
     AutoImport({
-      imports: ['vue', 'vue-router', 'pinia'],
+      imports: [
+        'vue',
+        'pinia',
+        {
+          'vue-router': ['useRouter', 'useRoute'],
+        },
+      ],
       dirs: ['./src/stores/**'],
       dts: true,
       vueTemplate: true,

@@ -3,9 +3,11 @@ export default {
     name: 'Melody Castro',
     roles: ['Fullstack Developer', 'Software Engineer', 'Tech Enthusiast'],
     location: 'Santiago, Chile',
-    bio: 'Passionate about crafting efficient and scalable web applications. \
+    bio: "Passionate about crafting efficient and scalable web applications. \
     Experienced in both frontend and backend development, with a keen interest \
-    in emerging technologies and best practices in software engineering.',
+    in emerging technologies and best practices in software engineering+. \
+    Always eager to learn and take on new challenges in the tech world. \
+    Let's connect and create something amazing together!",
   },
   links: {
     github: 'https://github.com/maucastrojm',

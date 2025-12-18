@@ -3,8 +3,7 @@ import '@/assets/styles/app.css';
 import '@/assets/styles/tailwind.css';
 </script>
 <template>
-  <IntroSection />
-  <ProjectsSection />
-  <SkillsSection />
+  <NavDock />
+  <RouterView />
 </template>
 <style scoped></style>

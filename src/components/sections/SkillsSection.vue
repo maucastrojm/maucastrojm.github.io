@@ -2,11 +2,11 @@
 import content from '@/assets/content';
 </script>
 <template>
-  <div class="p-8">
-    <h2 class="text-4xl w-full">
+  <div class="flex h-screen flex-wrap flex-col pt-40">
+    <h2 class="text-4xl uppercase text-primary">
       {{ content.sections.skills }}
     </h2>
-    <div class="w-full flex gap-4 mt-6 flex-wrap justify-center">
+    <div class="w-full flex gap-4 pt-16 flex-wrap justify-center">
       <div
         v-for="skill in content.skills"
         :key="skill.name"

@@ -1,4 +1,4 @@
-import App from '@/App.vue';
+import HomeView from '@/views/HomeView.vue';
 import { createRouter, createWebHistory } from 'vue-router';
 
 const router = createRouter({
@@ -7,9 +7,17 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: App,
+      component: HomeView,
     },
   ],
+  scrollBehavior: (to) => {
+    if (to.hash) {
+      return {
+        el: to.hash,
+        behavior: 'smooth',
+      };
+    }
+  },
 });
 
 export default router;

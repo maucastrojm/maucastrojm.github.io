@@ -58,6 +58,13 @@ export default defineConfigWithVueTs(
       ],
       'unicorn/no-abusive-eslint-disable': ['off'],
       'unicorn/prevent-abbreviations': ['off'],
+      'vue/block-order': [
+        'error',
+        {
+          order: ['script', 'template', 'style'],
+        },
+      ],
+      'prefer-arrow-callback': ['error'],
     },
   },
 );
