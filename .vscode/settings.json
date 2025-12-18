@@ -60,5 +60,6 @@
     "Dockerfile": "docker-compose*.yml"
   },
   "git.blame.editorDecoration.enabled": true,
-  "git.blame.statusBarItem.enabled": true
+  "git.blame.statusBarItem.enabled": true,
+  "editor.tabSize": 2
 }

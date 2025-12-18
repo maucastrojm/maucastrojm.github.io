@@ -17,9 +17,9 @@
     "type-check": "vue-tsc --build",
     "lint": "eslint . --fix --cache --concurrency auto",
     "ui:add": "pnpm dlx shadcn-vue@latest add",
-    "update": "pnpm dlx npm-check-updates -u",
+    "update": "pnpm dlx npm-check-updates -i --format group",
     "update:dry": "pnpm dlx npm-check-updates",
-    "update:interactive": "pnpm dlx npm-check-updates -i --format group"
+    "update:auto": "pnpm dlx npm-check-updates -u"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.17",
@@ -31,6 +31,7 @@
     "lucide-vue-next": "^0.559.0",
     "motion-v": "^1.7.4",
     "pinia": "^3.0.4",
+    "reka-ui": "^2.6.1",
     "tailwindcss": "^4.1.17",
     "typescript-eslint": "^8.49.0",
     "unplugin-auto-import": "^20.3.0",

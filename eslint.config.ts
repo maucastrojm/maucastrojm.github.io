@@ -8,24 +8,17 @@ import tseslint from 'typescript-eslint';
 import eslintPluginUnicorn from 'eslint-plugin-unicorn';
 
 export default defineConfigWithVueTs(
-  {
-    name: 'app/files-to-lint',
-    files: ['**/*.{ts,mts,tsx,vue}'],
-  },
   globalIgnores(['**/dist/**', '**/dist-ssr/**', '**/coverage/**']),
   ...tseslint.configs.recommended,
   pluginVue.configs['flat/recommended'],
   eslintPrettier,
   vueTsConfigs.recommended,
+  eslintPluginUnicorn.configs.unopinionated,
+  pluginVitest.configs.recommended,
   {
-    ...eslintPluginUnicorn.configs.unopinionated,
-    ...pluginVitest.configs.recommended,
-    files: ['src/**/__tests__/*'],
+    files: ['**/*.{ts,mts,tsx,vue}', 'src/**/__tests__/*'],
     languageOptions: {
       globals: { ...globals.browser, ...globals.node },
-    },
-    plugins: {
-      unicorn: eslintPluginUnicorn,
     },
     rules: {
       'vue/max-attributes-per-line': ['off'],

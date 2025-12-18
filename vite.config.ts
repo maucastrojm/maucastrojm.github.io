@@ -11,13 +11,6 @@ export default defineConfig({
     vue(),
     vueDevTools(),
     tailwindcss(),
-    Components({
-      dirs: ['src'],
-      extensions: ['vue'],
-      deep: true,
-      dts: true,
-      syncMode: 'overwrite',
-    }),
     AutoImport({
       imports: ['vue', 'vue-router', 'pinia'],
       dirs: ['./src/stores/**'],
@@ -27,6 +20,13 @@ export default defineConfig({
         enabled: true,
       },
       dtsMode: 'overwrite',
+    }),
+    Components({
+      dirs: ['src'],
+      extensions: ['vue'],
+      deep: true,
+      dts: true,
+      syncMode: 'overwrite',
     }),
   ],
   resolve: {
