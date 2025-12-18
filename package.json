@@ -19,7 +19,8 @@
     "ui:add": "pnpm dlx shadcn-vue@latest add",
     "update": "pnpm dlx npm-check-updates -i --format group",
     "update:dry": "pnpm dlx npm-check-updates",
-    "update:auto": "pnpm dlx npm-check-updates -u"
+    "update:auto": "pnpm dlx npm-check-updates -u",
+    "prepare": "husky"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.17",
