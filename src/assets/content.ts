@@ -5,7 +5,7 @@ export default {
     location: 'Santiago, Chile',
     bio: "Passionate about crafting efficient and scalable web applications. \
     Experienced in both frontend and backend development, with a keen interest \
-    in emerging technologies and best practices in software engineering+. \
+    in emerging technologies and best practices in software engineering.\n\n \
     Always eager to learn and take on new challenges in the tech world. \
     Let's connect and create something amazing together!",
   },
@@ -20,6 +20,7 @@ export default {
     projects: 'My Projects',
     skills: 'Technical Skills',
     news: 'For You',
+    contactMe: 'Contact Me',
   },
   projects: [
     {

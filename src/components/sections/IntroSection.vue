@@ -5,22 +5,32 @@ import { MailIcon, FileTextIcon } from 'lucide-vue-next';
 <template>
   <div class="flex h-screen flex-wrap flex-col pt-40">
     <div id="title">
-      <h1 class="text-8xl font-black uppercase text-primary">{{ content.aboutMe.name }}</h1>
-      <h2 class="text-4xl font-light text-primary">{{ content.aboutMe.roles[0] }}</h2>
+      <h1 class="text-8xl impact-text font-black uppercase text-primary">
+        {{ content.aboutMe.name }}
+      </h1>
+      <h2 class="text-4xl font-light text-primary">
+        {{ content.aboutMe.roles[0] }}
+      </h2>
     </div>
     <div class="flex mt-24 justify-end">
       <div id="about-me" class="max-w-[50%] text-right pt-16">
-        <h2 class="text-4xl uppercase text-primary">{{ content.sections.aboutMe }}</h2>
-        <p class="mt-4">{{ content.aboutMe.bio }}</p>
+        <h2 class="text-4xl uppercase text-primary">
+          {{ content.sections.aboutMe }}
+        </h2>
+        <p class="mt-4 whitespace-pre-line">
+          {{ content.aboutMe.bio }}
+        </p>
       </div>
     </div>
     <div id="actions" class="flex mt-16">
       <div class="flex-1">
-        <UiButton size="lg">{{ content.actions.contactMe }}</UiButton>
+        <UiButton size="lg">
+          {{ content.actions.contactMe }}
+        </UiButton>
       </div>
       <div class="flex flex-1 gap-4 flex-row-reverse">
-        <UiButton size="lg" variant="outline">Github</UiButton>
-        <UiButton size="lg" variant="outline">LinkedIn</UiButton>
+        <UiButton size="lg" variant="outline"> Github </UiButton>
+        <UiButton size="lg" variant="outline"> LinkedIn </UiButton>
         <UiButton size="lg" variant="outline">
           <FileTextIcon />
         </UiButton>
