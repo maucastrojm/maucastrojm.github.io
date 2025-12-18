@@ -8,6 +8,14 @@ import {
   ORIENTATION_INJECTION_KEY,
 } from './injectionKeys';
 
+interface Props {
+  active?: boolean;
+}
+
+withDefaults(defineProps<Props>(), {
+  active: false,
+});
+
 const iconRef = ref<HTMLDivElement | null>(null);
 
 const mouseX = inject(MOUSE_X_INJECTION_KEY, ref(Infinity));
@@ -45,6 +53,10 @@ const iconWidth = computed(() => {
   <div
     ref="iconRef"
     class="flex aspect-square cursor-pointer items-center justify-center rounded-full transition-all duration-200 ease-out hover:bg-primary/15"
+    :class="{
+      'bg-primary/25 text-primary': active,
+      'text-muted-foreground': !active,
+    }"
     :style="{
       width: `${iconWidth}px`,
       height: `${iconWidth}px`,
