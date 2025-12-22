@@ -13,20 +13,21 @@ export default defineConfig({
     vueDevTools(),
     tailwindcss(),
     AutoImport({
+      imports: ['vue', 'vue-router', 'pinia'],
       dirs: ['./src/stores/**'],
       dts: true,
       vueTemplate: true,
-      vueDirectives: true,
       eslintrc: {
         enabled: true,
       },
-      packagePresets: ['vue', 'vue-router', 'pinia'],
+      dtsMode: 'overwrite',
     }),
     Components({
       dirs: ['src'],
       extensions: ['vue'],
       deep: true,
       dts: true,
+      syncMode: 'overwrite',
     }),
     visualizer({
       open: process.env.OPEN_STATS === 'true',

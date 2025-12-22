@@ -1,24 +1,41 @@
 <script setup lang="ts">
 import '@/assets/styles/tailwind.css';
 import '@/assets/styles/app.css';
-import gsap from 'gsap';
 import { useFullPageScroll } from '@/lib/useFullPageScroll';
+import { useEventListener } from '@vueuse/core';
 
 onMounted(() => {
-  gsap.timeline().to('#clipped-content', {
-    scrollTrigger: {
-      trigger: '#clipped-content',
-      start: 'top top',
-      end: 'bottom top',
-      scrub: true,
+  const element = document.getElementById('clipped-content');
+  if (!element) return;
+
+  // Define keyframes declaratively
+  const animation = element.animate(
+    [
+      { clipPath: 'polygon(0% 0%, 65% 0%, 0% 50%, 0% 100%)', offset: 0 },
+      { clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)', offset: 0.25 },
+      { clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)', offset: 0.5 },
+      { clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)', offset: 0.75 },
+      { clipPath: 'polygon(52% 0%, 100% 0%, 100% 100%, 52% 100%)', offset: 1 },
+    ],
+    {
+      duration: 1000,
+      fill: 'both',
     },
-    keyframes: {
-      '0%': { clipPath: 'polygon(0% 0%, 65% 0, 0% 50%, 0 100%)' },
-      '25%': { clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)' },
-      '50%': { clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)' },
-      '75%': { clipPath: 'polygon(52% 0%, 100% 0%, 100% 100%, 52% 100%)' },
-    },
-  });
+  );
+
+  animation.pause();
+
+  const handleScroll = () => {
+    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+    if (maxScroll <= 0) return; // Prevent division by zero
+
+    const scrollPercent = Math.max(0, Math.min(1, window.scrollY / maxScroll));
+    animation.currentTime = scrollPercent * 1000;
+  };
+
+  useEventListener(window, 'scroll', handleScroll, { passive: true });
+  handleScroll();
+
   useFullPageScroll();
 });
 </script>
