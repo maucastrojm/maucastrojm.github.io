@@ -14,7 +14,7 @@
     "test": "vitest",
     "coverage": "vitest run --coverage",
     "build-only": "vite build",
-    "type-check": "vue-tsc --build",
+    "type-check": "vue-tsc --build --noEmit",
     "lint": "eslint . --fix --cache --concurrency auto",
     "ui:add": "pnpm dlx shadcn-vue@latest add",
     "update": "pnpm dlx npm-check-updates -i --format group",
@@ -28,25 +28,26 @@
     "@vueuse/core": "^14.1.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.4",
+    "gsap": "^3.14.2",
     "husky": "^9.1.7",
-    "lucide-vue-next": "^0.561.0",
+    "lucide-vue-next": "^0.562.0",
     "motion-v": "^1.7.4",
     "pinia": "^3.0.4",
     "reka-ui": "^2.6.1",
     "tailwindcss": "^4.1.18",
-    "typescript-eslint": "^8.50.0",
+    "typescript-eslint": "^8.50.1",
     "unplugin-auto-import": "^20.3.0",
     "unplugin-vue-components": "^30.0.0",
     "vitest-mock-extended": "^3.1.0",
-    "vue": "^3.5.25",
+    "vue": "^3.5.26",
     "vue-router": "^4.6.4"
   },
   "devDependencies": {
     "@tsconfig/node24": "^24.0.3",
     "@types/jsdom": "^27.0.0",
-    "@types/node": "^24.10.1",
+    "@types/node": "^25.0.3",
     "@vitejs/plugin-vue": "^6.0.3",
-    "@vitest/eslint-plugin": "^1.5.2",
+    "@vitest/eslint-plugin": "^1.6.1",
     "@vue/eslint-config-typescript": "^14.6.0",
     "@vue/test-utils": "^2.4.6",
     "@vue/tsconfig": "^0.8.1",
@@ -67,6 +68,6 @@
     "vite": "^7.3.0",
     "vite-plugin-vue-devtools": "^8.0.5",
     "vitest": "^4.0.16",
-    "vue-tsc": "^3.1.8"
+    "vue-tsc": "^3.2.1"
   }
 }

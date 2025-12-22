@@ -3,7 +3,7 @@ import content from '@/assets/content';
 </script>
 <template>
   <div class="flex h-screen flex-wrap flex-col pt-40">
-    <h1 id="title" class="text-9xl impact-text font-black uppercase text-primary">
+    <h1 id="title" class="impact-text">
       {{ content.sections.contactMe }}
     </h1>
     <div class="flex mt-24 gap-4">

@@ -65,6 +65,7 @@ export default defineConfigWithVueTs(
         },
       ],
       'prefer-arrow-callback': ['error'],
+      'unicorn/prefer-global-this': ['off'],
     },
   },
 );

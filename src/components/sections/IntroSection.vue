@@ -5,7 +5,7 @@ import { MailIcon, FileTextIcon } from 'lucide-vue-next';
 <template>
   <div class="flex h-screen flex-wrap flex-col pt-40">
     <div id="title">
-      <h1 class="text-8xl impact-text font-black uppercase text-primary">
+      <h1 class="impact-text">
         {{ content.aboutMe.name }}
       </h1>
       <h2 class="text-5xl font-light text-primary">

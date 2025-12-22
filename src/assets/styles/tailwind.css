@@ -136,3 +136,7 @@ html.dark {
 html.light {
   color-scheme: light;
 }
+
+body * {
+  @apply transition-colors! duration-200;
+}

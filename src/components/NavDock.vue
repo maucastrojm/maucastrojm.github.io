@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import type { UiDockIcon } from '@/components/ui/dock';
-import { BriefcaseBusinessIcon, HomeIcon, MailIcon, MoonIcon, PencilRulerIcon, SunIcon } from 'lucide-vue-next';
+import { BriefcaseBusinessIcon, HomeIcon, MailIcon, PencilRulerIcon } from 'lucide-vue-next';
 import { computed, type Component } from 'vue';
 import { useScrollNavigation } from '@/lib/useScrollNavigation';
-import { useDark, useToggle } from '@vueuse/core';
 
 interface NavLink {
   path: string;
@@ -16,9 +15,6 @@ const links: NavLink[] = [
   { path: 'skills', icon: PencilRulerIcon },
   { path: 'contact', icon: MailIcon },
 ];
-
-const isDark = useDark();
-const toggleDark = useToggle(isDark);
 
 const sectionIds = computed(() => links.map((link) => link.path));
 
@@ -33,9 +29,5 @@ const { activeSection } = useScrollNavigation({
         <Component :is="link.icon" />
       </UiDockIcon>
     </RouterLink>
-    <UiDockSeparator />
-    <UiDockIcon @click="toggleDark()">
-      <Component :is="isDark ? SunIcon : MoonIcon" />
-    </UiDockIcon>
   </UiDock>
 </template>

@@ -1,8 +1,6 @@
 <template>
-  <div class="flex flex-col max-w-300 mx-auto">
-    <IntroSection id="intro" />
-    <ProjectsSection id="projects" />
-    <SkillsSection id="skills" />
-    <ContactMeSection id="contact" />
-  </div>
+  <IntroSection id="intro" />
+  <ProjectsSection id="projects" />
+  <SkillsSection id="skills" />
+  <ContactMeSection id="contact" />
 </template>
