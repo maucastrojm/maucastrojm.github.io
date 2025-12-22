@@ -14,7 +14,7 @@
     "test": "vitest",
     "coverage": "vitest run --coverage",
     "build-only": "vite build",
-    "type-check": "vue-tsc --build --noEmit",
+    "type-check": "vue-tsc --noEmit --project tsconfig.app.json",
     "lint": "eslint . --fix --cache --concurrency auto",
     "ui:add": "pnpm dlx shadcn-vue@latest add",
     "update": "pnpm dlx npm-check-updates -i --format group",
