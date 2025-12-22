@@ -5,6 +5,7 @@ import vueDevTools from 'vite-plugin-vue-devtools';
 import tailwindcss from '@tailwindcss/vite';
 import AutoImport from 'unplugin-auto-import/vite';
 import Components from 'unplugin-vue-components/vite';
+import { visualizer } from 'rollup-plugin-visualizer';
 
 export default defineConfig({
   plugins: [
@@ -26,6 +27,12 @@ export default defineConfig({
       extensions: ['vue'],
       deep: true,
       dts: true,
+    }),
+    visualizer({
+      open: process.env.OPEN_STATS === 'true',
+      filename: 'dist/stats.html',
+      gzipSize: true,
+      brotliSize: true,
     }),
   ],
   resolve: {
