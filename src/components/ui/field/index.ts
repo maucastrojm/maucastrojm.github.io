@@ -24,13 +24,13 @@ export const fieldVariants = cva('group/field flex w-full gap-3 data-[invalid=tr
 
 export type FieldVariants = VariantProps<typeof fieldVariants>;
 
-export { default as Field } from './UiField.vue';
-export { default as FieldContent } from './UiFieldContent.vue';
-export { default as FieldDescription } from './UiFieldDescription.vue';
-export { default as FieldError } from './UiFieldError.vue';
-export { default as FieldGroup } from './UiFieldGroup.vue';
-export { default as FieldLabel } from './UiFieldLabel.vue';
-export { default as FieldLegend } from './UiFieldLegend.vue';
-export { default as FieldSeparator } from './UiFieldSeparator.vue';
-export { default as FieldSet } from './UiFieldSet.vue';
-export { default as FieldTitle } from './UiFieldTitle.vue';
+export { default as UiField } from './UiField.vue';
+export { default as UiFieldContent } from './UiFieldContent.vue';
+export { default as UiFieldDescription } from './UiFieldDescription.vue';
+export { default as UiFieldError } from './UiFieldError.vue';
+export { default as UiFieldGroup } from './UiFieldGroup.vue';
+export { default as UiFieldLabel } from './UiFieldLabel.vue';
+export { default as UiFieldLegend } from './UiFieldLegend.vue';
+export { default as UiFieldSeparator } from './UiFieldSeparator.vue';
+export { default as UiFieldSet } from './UiFieldSet.vue';
+export { default as UiFieldTitle } from './UiFieldTitle.vue';

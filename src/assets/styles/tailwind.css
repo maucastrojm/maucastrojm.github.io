@@ -1,7 +1,7 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-@custom-variant dark (&:is(.dark *));
+@custom-variant dark (&:where(.dark, .dark *));
 
 :root {
   --card: oklch(1 0 0);
@@ -72,6 +72,10 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+
+  p, h1, h2, h3, h4, h5, h6, span, a, li, div {
+    @apply text-foreground
+  }
 }
 
 @theme inline {

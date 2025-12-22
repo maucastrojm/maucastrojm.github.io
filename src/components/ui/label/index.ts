@@ -1,1 +1,1 @@
-export { default as Label } from './UiLabel.vue';
+export { default as UiLabel } from './UiLabel.vue';
