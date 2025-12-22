@@ -8,7 +8,7 @@ import { MailIcon, FileTextIcon } from 'lucide-vue-next';
       <h1 class="text-8xl impact-text font-black uppercase text-primary">
         {{ content.aboutMe.name }}
       </h1>
-      <h2 class="text-4xl font-light text-primary">
+      <h2 class="text-5xl font-light text-primary">
         {{ content.aboutMe.roles[0] }}
       </h2>
     </div>
@@ -22,7 +22,7 @@ import { MailIcon, FileTextIcon } from 'lucide-vue-next';
         </p>
       </div>
     </div>
-    <div id="actions" class="flex mt-16">
+    <div id="actions" class="flex mt-8">
       <div class="flex-1">
         <UiButton size="lg">
           {{ content.actions.contactMe }}

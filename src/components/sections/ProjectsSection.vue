@@ -20,7 +20,7 @@ const selectedProject = computed(() => content.projects[selectedIndex.value]);
             {{ selectedProject?.description }}
           </p>
         </div>
-        <UiButton variant="outline" class="mt-8">
+        <UiButton variant="outline" class="mt-8" size="lg">
           {{ content.actions.seeMore }}
         </UiButton>
       </div>

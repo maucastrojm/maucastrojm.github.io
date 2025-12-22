@@ -54,7 +54,8 @@ export default {
   contactForm: {
     name: 'Your Name',
     email: 'Your Email',
-    message: 'Your Message',
+    subject: 'Email Subject',
+    message: 'Email Message',
     send: `Let's talk`,
   },
   news: [
@@ -62,7 +63,19 @@ export default {
       title: 'Embracing TypeScript in Modern Web Development',
       author: 'Melody Castro',
       date: '2024-05-10',
-      link: '',
+      href: '',
+    },
+    {
+      title: 'Top 10 Vue.js Tips for Building Scalable Applications',
+      author: 'Melody Castro',
+      date: '2024-04-22',
+      href: '',
+    },
+    {
+      title: 'Understanding RESTful APIs: A Beginner’s Guide',
+      author: 'Melody Castro',
+      date: '2024-03-15',
+      href: '',
     },
   ],
 };
