@@ -1,11 +1,17 @@
 <script setup lang="ts">
 import content from '@/assets/content';
+import { cn } from '@/lib/utils';
+
+const props = withDefaults(defineProps<{ dark?: boolean }>(), { dark: false });
 </script>
 <template>
   <div class="flex h-screen flex-wrap flex-col pt-40">
-    <h1 id="title" class="impact-text">
-      {{ content.sections.contactMe }}
-    </h1>
+    <div>
+      <StarsBackground v-if="!props.dark" class="w-full h-[400%] absolute inset-0 mix-blend-screen z-2" />
+      <h1 :class="cn('impact-text', { starred: !props.dark })">
+        {{ content.sections.contactMe }}
+      </h1>
+    </div>
     <div class="flex mt-24 gap-4">
       <div class="flex-1">
         <UiFieldSet>

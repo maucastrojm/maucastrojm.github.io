@@ -9,4 +9,8 @@ body {
 .impact-text {
   font-family: 'BBH Hegarty', serif;
   @apply text-8xl font-black uppercase text-primary tracking-wider;
+
+  &.starred {
+    @apply relative z-1 text-black;
+  }
 }

@@ -1,6 +1,6 @@
 import { useEventListener, useWindowScroll } from '@vueuse/core';
 
-export const useScrollAnimation = (element: Ref<HTMLElement | null>, keyframes: Keyframe[]) => {
+export const useScrollAnimation = (element: Ref<HTMLElement | null>, keyframes: Keyframe[], steps: number = 1000) => {
   const { y } = useWindowScroll();
 
   const scrollPercentage = () => {
@@ -14,12 +14,12 @@ export const useScrollAnimation = (element: Ref<HTMLElement | null>, keyframes: 
     (newElement) => {
       if (!newElement) return;
       const animation = newElement.animate(keyframes, {
-        duration: 1000,
+        duration: steps,
         fill: 'both',
       });
       animation.pause();
 
-      const syncAnimationWithScroll = () => (animation.currentTime = scrollPercentage() * 1000);
+      const syncAnimationWithScroll = () => (animation.currentTime = scrollPercentage() * steps);
 
       useEventListener(window, 'scroll', syncAnimationWithScroll, { passive: true });
       syncAnimationWithScroll();

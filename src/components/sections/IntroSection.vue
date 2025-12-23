@@ -1,13 +1,19 @@
 <script setup lang="ts">
 import content from '@/assets/content';
+import { cn } from '@/lib/utils';
 import { MailIcon, FileTextIcon } from 'lucide-vue-next';
+
+const props = withDefaults(defineProps<{ dark?: boolean }>(), { dark: false });
 </script>
 <template>
   <div class="flex h-screen flex-wrap flex-col pt-40">
     <div id="title">
-      <h1 class="impact-text">
-        {{ content.aboutMe.name }}
-      </h1>
+      <div>
+        <StarsBackground v-if="!props.dark" class="w-full h-full absolute inset-0 mix-blend-screen z-2" />
+        <h1 :class="cn('impact-text', { starred: !props.dark })">
+          {{ content.aboutMe.name }}
+        </h1>
+      </div>
       <h2 class="text-5xl font-light text-primary">
         {{ content.aboutMe.roles[0] }}
       </h2>

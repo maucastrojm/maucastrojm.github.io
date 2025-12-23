@@ -61,8 +61,8 @@ provide(DISTANCE_INJECTION_KEY, distance);
     ref="dockRef"
     :class="
       cn(
-        'supports-backdrop-blur:bg-white/10 supports-backdrop-blur:dark:bg-black/10 mx-auto mt-8 flex h-14.5 w-max rounded-2xl border p-2 backdrop-blur-md transition-all gap-4',
-        orientation === 'vertical' && 'flex-col w-14.5 h-max',
+        'bg-white/10 dark:bg-black/10 mx-auto mt-8 flex h-14.5 w-max rounded-2xl border p-2 transition-all gap-4',
+        props.orientation === 'vertical' && 'flex-col w-14.5 h-max',
         props.class,
         dockClass,
       )
