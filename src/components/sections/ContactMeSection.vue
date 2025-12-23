@@ -12,7 +12,7 @@ const props = withDefaults(defineProps<{ dark?: boolean }>(), { dark: false });
         {{ content.sections.contactMe }}
       </h1>
     </div>
-    <div class="flex mt-24 gap-4">
+    <div class="flex mt-24 gap-4 z-3">
       <div class="flex-1">
         <UiFieldSet>
           <UiFieldGroup class="gap-2">

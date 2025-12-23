@@ -9,7 +9,6 @@ const props = withDefaults(defineProps<{ dark?: boolean }>(), { dark: false });
   <div class="flex h-screen flex-wrap flex-col pt-40">
     <div id="title">
       <div>
-        <StarsBackground v-if="!props.dark" class="w-full h-full absolute inset-0 mix-blend-screen z-2" />
         <h1 :class="cn('impact-text', { starred: !props.dark })">
           {{ content.aboutMe.name }}
         </h1>
@@ -18,7 +17,7 @@ const props = withDefaults(defineProps<{ dark?: boolean }>(), { dark: false });
         {{ content.aboutMe.roles[0] }}
       </h2>
     </div>
-    <div class="flex mt-24 justify-end">
+    <div class="flex mt-24 justify-end z-4">
       <div id="about-me" class="max-w-[50%] text-right pt-16">
         <h2 class="text-4xl uppercase text-primary">
           {{ content.sections.aboutMe }}
@@ -28,7 +27,7 @@ const props = withDefaults(defineProps<{ dark?: boolean }>(), { dark: false });
         </p>
       </div>
     </div>
-    <div id="actions" class="flex mt-8">
+    <div id="actions" class="flex mt-8 z-3">
       <div class="flex-1">
         <UiButton size="lg">
           {{ content.actions.contactMe }}

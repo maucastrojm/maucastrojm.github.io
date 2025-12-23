@@ -11,18 +11,18 @@ useScrollAnimation(clippedContentRef, [
 ]);
 </script>
 <template>
-  <div ref="clipped-content" class="bg-background absolute left-0 top-0 w-screen z-9999 dark">
-    <NavDock class="z-9999" />
+  <div ref="clipped-content" class="bg-background absolute left-0 top-0 w-screen z-4 dark">
+    <NavDock class="z-999" />
     <div class="flex flex-col max-w-280 mx-auto">
       <IntroSection id="intro" dark />
       <ProjectsSection id="projects" />
       <SkillsSection id="skills" />
       <ContactMeSection id="contact" dark />
-      <StarsBackground class="absolute inset-0 -z-999" />
+      <StarsBackground class="absolute inset-0 -z-30" />
     </div>
   </div>
   <div class="bg-background static">
-    <NavDock class="z-5" />
+    <NavDock class="z-3" />
     <div class="flex flex-col max-w-280 mx-auto">
       <IntroSection id="intro" />
       <ProjectsSection id="projects" />
