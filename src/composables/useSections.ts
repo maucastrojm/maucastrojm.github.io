@@ -1,4 +1,4 @@
-export const useScrollNavigation = (options: { sectionIds: string[] }) => {
+const useSections = (options: { sectionIds: string[] }) => {
   const { sectionIds } = options;
   const activeSection = ref<string | null>(null);
 
@@ -62,3 +62,5 @@ export const useScrollNavigation = (options: { sectionIds: string[] }) => {
     updateActiveSection,
   };
 };
+
+export default useSections;

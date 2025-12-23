@@ -2,7 +2,6 @@
 import type { UiDockIcon } from '@/components/ui/dock';
 import { BriefcaseBusinessIcon, HomeIcon, MailIcon, PencilRulerIcon } from 'lucide-vue-next';
 import { computed, type Component } from 'vue';
-import { useScrollNavigation } from '@/lib/useScrollNavigation';
 
 interface NavLink {
   path: string;
@@ -18,7 +17,7 @@ const links: NavLink[] = [
 
 const sectionIds = computed(() => links.map((link) => link.path));
 
-const { activeSection } = useScrollNavigation({
+const { activeSection } = useSections({
   sectionIds: sectionIds.value,
 });
 </script>

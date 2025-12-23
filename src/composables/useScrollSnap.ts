@@ -1,6 +1,6 @@
 import { useEventListener } from '@vueuse/core';
 
-export function useFullPageScroll() {
+const useScrollSnap = () => {
   const isScrolling = ref(false);
   const currentSection = ref(0);
 
@@ -121,4 +121,6 @@ export function useFullPageScroll() {
     currentSection,
     isScrolling,
   };
-}
+};
+
+export default useScrollSnap;
