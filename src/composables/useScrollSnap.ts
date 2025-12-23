@@ -1,126 +1,92 @@
-import { useEventListener } from '@vueuse/core';
+import { useEventListener, useWindowScroll } from '@vueuse/core';
 
-const useScrollSnap = () => {
-  const isScrolling = ref(false);
+const useScrollSnap = (options: { touchThreshold?: number } = {}) => {
+  const { touchThreshold = 50 } = options;
+  const { y: scrollY } = useWindowScroll();
   const currentSection = ref(0);
+  const touchStartY = ref(0);
 
-  const scrollToSection = (direction: 'up' | 'down') => {
-    if (isScrolling.value) return;
+  const isOutOfBounds = (target: 'up' | 'down', targetPosition: number, maxPosition: number) => {
+    return (
+      targetPosition === scrollY.value ||
+      (target === 'down' && scrollY.value >= maxPosition - 5) ||
+      (target === 'up' && scrollY.value <= 5)
+    );
+  };
 
-    isScrolling.value = true;
-
+  const navigate = (target: 'up' | 'down' | 'top' | 'bottom') => {
     const viewportHeight = window.innerHeight;
-    const currentScroll = window.scrollY;
-    const maxScroll = document.documentElement.scrollHeight - viewportHeight;
+    const maxPosition = document.documentElement.scrollHeight - viewportHeight;
 
-    // Get current section based on scroll position
-    const currentSectionIndex = Math.round(currentScroll / viewportHeight);
-
-    const targetSection = direction === 'down' ? currentSectionIndex + 1 : currentSectionIndex - 1;
-
-    // Calculate target scroll position
-    let targetScroll = targetSection * viewportHeight;
-    targetScroll = Math.max(0, Math.min(targetScroll, maxScroll));
-
-    // Check if we can scroll
-    if (
-      targetScroll === currentScroll ||
-      (direction === 'down' && currentScroll >= maxScroll - 5) ||
-      (direction === 'up' && currentScroll <= 5)
-    ) {
-      isScrolling.value = false;
+    if (target === 'top') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      currentSection.value = 0;
+      return;
+    } else if (target === 'bottom') {
+      window.scrollTo({ top: maxPosition, behavior: 'smooth' });
+      currentSection.value = Math.floor(maxPosition / viewportHeight);
       return;
     }
 
-    currentSection.value = targetSection;
+    const currentSectionIndex = Math.round(scrollY.value / viewportHeight);
+    const targetSection = currentSectionIndex + (target === 'down' ? 1 : -1);
 
+    let targetPosition = targetSection * viewportHeight;
+    targetPosition = Math.max(0, Math.min(targetPosition, maxPosition));
+
+    if (isOutOfBounds(target, targetPosition, maxPosition)) return;
+
+    currentSection.value = targetSection;
     window.scrollTo({
-      top: targetScroll,
+      top: targetPosition,
       behavior: 'smooth',
     });
-
-    // Reset scrolling flag after animation completes
-    setTimeout(() => {
-      isScrolling.value = false;
-    }, 30);
   };
 
-  // Handle wheel events
   useEventListener(
     window,
     'wheel',
     (e: WheelEvent) => {
       e.preventDefault();
       const direction = e.deltaY > 0 ? 'down' : 'up';
-      scrollToSection(direction);
+      navigate(direction);
     },
     { passive: false },
   );
 
-  // Handle keyboard events
   useEventListener(window, 'keydown', (e: KeyboardEvent) => {
-    switch (e.key) {
-      case 'ArrowDown':
-      case 'PageDown': {
-        e.preventDefault();
-        scrollToSection('down');
-
-        break;
-      }
-      case ' ': {
-        e.preventDefault();
-        // Shift+Space scrolls up, Space scrolls down
-        scrollToSection(e.shiftKey ? 'up' : 'down');
-
-        break;
-      }
-      case 'ArrowUp':
-      case 'PageUp': {
-        e.preventDefault();
-        scrollToSection('up');
-
-        break;
-      }
-      case 'Home': {
-        e.preventDefault();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-
-        break;
-      }
-      case 'End': {
-        e.preventDefault();
-        const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-        window.scrollTo({ top: maxScroll, behavior: 'smooth' });
-
-        break;
-      }
-      // No default
+    e.preventDefault();
+    const downKeys = ['ArrowDown', 'PageDown', ' '];
+    const upKeys = ['ArrowUp', 'PageUp'];
+    const topKeys = ['Home'];
+    const bottomKeys = ['End'];
+    const isShiftSpace = e.key === ' ' && e.shiftKey;
+    if (isShiftSpace || upKeys.includes(e.key)) {
+      navigate('up');
+    } else if (downKeys.includes(e.key)) {
+      navigate('down');
+    } else if (topKeys.includes(e.key)) {
+      navigate('top');
+    } else if (bottomKeys.includes(e.key)) {
+      navigate('bottom');
     }
   });
 
-  // Handle touch events for mobile
-  let touchStartY = 0;
   useEventListener(window, 'touchstart', (e: TouchEvent) => {
     if (!e.touches[0]) return;
-    touchStartY = e.touches[0].clientY;
+    touchStartY.value = e.touches[0].clientY;
   });
 
   useEventListener(window, 'touchend', (e: TouchEvent) => {
     if (!e.changedTouches[0]) return;
     const touchEndY = e.changedTouches[0].clientY;
-    const diff = touchStartY - touchEndY;
+    const diff = touchStartY.value - touchEndY;
 
-    if (Math.abs(diff) > 50) {
-      // Swipe threshold
+    if (Math.abs(diff) > touchThreshold) {
       const direction = diff > 0 ? 'down' : 'up';
-      scrollToSection(direction);
+      navigate(direction);
     }
   });
-
-  return {
-    currentSection,
-    isScrolling,
-  };
 };
 
 export default useScrollSnap;
