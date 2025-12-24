@@ -10,7 +10,7 @@ const selectedProject = computed(() => content.projects[selectedIndex.value]);
     <h2 class="text-4xl uppercase text-primary">
       {{ content.sections.projects }}
     </h2>
-    <div class="flex pt-16">
+    <div class="flex pt-16 gap-x-12">
       <div class="flex-1">
         <div class="pl-2 max-h-64">
           <h3 class="font-semibold">
@@ -24,30 +24,23 @@ const selectedProject = computed(() => content.projects[selectedIndex.value]);
           {{ content.actions.seeMore }}
         </UiButton>
       </div>
-      <div class="flex-2 flex relative min-h-100 justify-center">
-        <div
-          class="bg-violet-700 blur-lg absolute top-1/2 left-1/2 transform -translate-x-1/2 right-0 bottom-0 rounded-full min-w-xs min-h-xs max-w-xs max-h-xs" />
-        <div
+      <div class="flex-2 flex flex-wrap gap-4">
+        <UiCard
           v-for="(project, index) in content.projects"
-          :key="index"
+          :key="project.name"
+          class="basis-[calc(50%-(--spacing(2)))] cursor-pointer bg-transparent backdrop-blur-[2px]"
           :class="
-            cn(
-              'w-max mt-6 border-3 border-transparent rounded-lg mr-4 shadow-md hover:shadow-lg transition-all hover:border-primary/10 bg-gray-100/40 backdrop-blur-lg',
-              {
-                'cursor-pointer': selectedIndex !== index,
-                'border-primary/30 hover:border-primary/30 border-3': selectedIndex === index,
-              },
-            )
+            cn({
+              'border-primary/30 bg-white/5': selectedIndex === index,
+            })
           "
-          @click.prevent="selectedIndex = index">
-          <div
-            class="shadow-primary/40 shadow-inner shadow-inner-2xl w-full h-full p-4 rounded-md"
-            :class="[{ '': selectedIndex === index }]">
-            <h3 class="font-bold text-2xl">
-              {{ project.name }}
-            </h3>
-          </div>
-        </div>
+          @click="selectedIndex = index">
+          <UiCardHeader>
+            <img :src="project.picture" :alt="project.name" class="w-full h-40 object-cover mb-2 rounded-md" />
+            <UiCardTitle>{{ project.name }}</UiCardTitle>
+            <UiCardSubtitle>{{ project.stack }}</UiCardSubtitle>
+          </UiCardHeader>
+        </UiCard>
       </div>
     </div>
   </div>

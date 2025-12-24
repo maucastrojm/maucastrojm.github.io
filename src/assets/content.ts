@@ -17,27 +17,47 @@ export default {
   },
   sections: {
     aboutMe: 'About Me',
-    projects: 'My Projects',
+    projects: 'Projects Showcase',
     skills: 'Technical Skills',
     news: 'For You',
     contactMe: 'Contact Me',
   },
   projects: [
     {
-      name: 'Project Alpha',
+      name: 'Portfolio Website',
+      stack: 'Vue, Tailwind, TypeScript',
       description:
         'A web application that streamlines task management for teams, \
         featuring real-time collaboration and intuitive UI.',
       link: '',
-      picture: '',
+      picture: '/img/project.jpg',
     },
     {
-      name: 'Beta Analytics',
+      name: 'Nugget Social',
+      stack: 'Nuxt, PrismaORM, PostgreSQL',
       description:
         'A data analytics platform that provides insights and visualizations \
         for business intelligence.',
       link: '',
-      picture: '',
+      picture: '/img/project.jpg',
+    },
+    {
+      name: 'Nugget Social',
+      stack: 'Nuxt, PrismaORM, PostgreSQL',
+      description:
+        'A data analytics platform that provides insights and visualizations \
+        for business intelligence.',
+      link: '',
+      picture: '/img/project.jpg',
+    },
+    {
+      name: 'Nugget Social',
+      stack: 'Nuxt, PrismaORM, PostgreSQL',
+      description:
+        'A data analytics platform that provides insights and visualizations \
+        for business intelligence.',
+      link: '',
+      picture: '/img/project.jpg',
     },
   ],
   skills: [

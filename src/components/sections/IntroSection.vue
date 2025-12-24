@@ -27,13 +27,13 @@ const props = withDefaults(defineProps<{ dark?: boolean }>(), { dark: false });
         </p>
       </div>
     </div>
-    <div id="actions" class="flex mt-8 z-3">
-      <div class="flex-1">
-        <UiButton size="lg">
+    <div id="actions" class="flex mt-8">
+      <div class="flex-1 z-3">
+        <UiButton size="lg" variant="default">
           {{ content.actions.contactMe }}
         </UiButton>
       </div>
-      <div class="flex flex-1 gap-4 flex-row-reverse">
+      <div class="flex flex-1 gap-4 flex-row-reverse z-4">
         <UiButton size="lg" variant="outline"> Github </UiButton>
         <UiButton size="lg" variant="outline"> LinkedIn </UiButton>
         <UiButton size="lg" variant="outline">

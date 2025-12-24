@@ -55,19 +55,22 @@ const useScrollSnap = (options: { touchThreshold?: number } = {}) => {
   );
 
   useEventListener(window, 'keydown', (e: KeyboardEvent) => {
-    e.preventDefault();
     const downKeys = ['ArrowDown', 'PageDown', ' '];
     const upKeys = ['ArrowUp', 'PageUp'];
     const topKeys = ['Home'];
     const bottomKeys = ['End'];
     const isShiftSpace = e.key === ' ' && e.shiftKey;
     if (isShiftSpace || upKeys.includes(e.key)) {
+      e.preventDefault();
       navigate('up');
     } else if (downKeys.includes(e.key)) {
+      e.preventDefault();
       navigate('down');
     } else if (topKeys.includes(e.key)) {
+      e.preventDefault();
       navigate('top');
     } else if (bottomKeys.includes(e.key)) {
+      e.preventDefault();
       navigate('bottom');
     }
   });

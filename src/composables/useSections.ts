@@ -2,64 +2,66 @@ const useSections = (options: { sectionIds: string[] }) => {
   const { sectionIds } = options;
   const activeSection = ref<string | null>(null);
 
-  const updateActiveSection = () => {
-    if (!sectionIds || sectionIds.length === 0) return;
+  interface SectionInfo {
+    id: string;
+    distanceFromCenter: number;
+    isVisible: boolean;
+  }
 
-    const sections = sectionIds
-      .map((sectionId) => {
-        const element = document.getElementById(sectionId);
-        if (!element) return null;
+  const getSectionInfo = (sectionId: string): SectionInfo | null => {
+    const element = document.getElementById(sectionId);
+    if (!element) return null;
 
-        const rect = element.getBoundingClientRect();
-        const elementTop = rect.top;
-        const elementBottom = rect.bottom;
-        const viewportHeight = window.innerHeight;
+    const rect = element.getBoundingClientRect();
+    const elementTop = rect.top;
+    const elementBottom = rect.bottom;
+    const viewportHeight = window.innerHeight;
 
-        // Consider a section active if its center point is in the middle 50% of the viewport
-        const elementCenter = elementTop + rect.height / 2;
-        const viewportCenter = viewportHeight / 2;
+    const elementCenter = elementTop + rect.height / 2;
+    const viewportCenter = viewportHeight / 2;
 
-        return {
-          id: sectionId,
-          distanceFromCenter: Math.abs(elementCenter - viewportCenter),
-          isVisible: elementTop < viewportHeight && elementBottom > 0,
-        };
-      })
-      .filter(Boolean);
+    return {
+      id: sectionId,
+      distanceFromCenter: Math.abs(elementCenter - viewportCenter),
+      isVisible: elementTop < viewportHeight && elementBottom > 0,
+    };
+  };
 
-    // Find the section closest to viewport center among visible sections
-    const visibleSections = sections.filter((s) => s?.isVisible);
-
-    // If no visible sections, default to the first one
-    if (visibleSections.length === 0) {
-      if (!activeSection.value && sectionIds.length > 0) {
-        activeSection.value = sectionIds[0] || null;
-      }
-      return;
-    }
-
-    const closestSection = visibleSections.reduce((closest, current) => {
+  const getClosestSection = (sections: SectionInfo[]) => {
+    return sections.reduce((closest, current) => {
       if (!current) return closest;
       return current.distanceFromCenter < (closest?.distanceFromCenter ?? Infinity) ? current : closest;
     });
+  };
 
-    if (closestSection?.id && closestSection.id !== activeSection.value) {
-      activeSection.value = closestSection.id;
+  const syncActiveSection = () => {
+    if (!sectionIds || sectionIds.length === 0) return;
+
+    const sections = sectionIds.map((sectionId) => getSectionInfo(sectionId));
+    const visibleSections = sections.filter((s) => s != null && s.isVisible);
+
+    // If no sections are visible, default to the first section
+    if (visibleSections.length === 0 && !activeSection.value && sectionIds[0]) {
+      activeSection.value = sectionIds[0];
+    } else {
+      const closestSection = getClosestSection(visibleSections as SectionInfo[]);
+
+      if (closestSection && closestSection.id !== activeSection.value) {
+        activeSection.value = closestSection.id;
+      }
     }
   };
 
   onMounted(() => {
-    window.addEventListener('scroll', updateActiveSection, { passive: true });
-    updateActiveSection();
+    window.addEventListener('scroll', syncActiveSection, { passive: true });
+    syncActiveSection();
   });
 
-  onUnmounted(() => {
-    window.removeEventListener('scroll', updateActiveSection);
-  });
+  onUnmounted(() => window.removeEventListener('scroll', syncActiveSection));
 
   return {
     activeSection,
-    updateActiveSection,
+    updateActiveSection: syncActiveSection,
   };
 };
 
