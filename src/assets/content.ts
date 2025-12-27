@@ -24,21 +24,28 @@ export default {
   },
   projects: [
     {
-      name: 'Portfolio Website',
+      name: 'Azalea Portfolio',
       stack: 'Vue, Tailwind, TypeScript',
       description:
-        'A web application that streamlines task management for teams, \
-        featuring real-time collaboration and intuitive UI.',
-      link: '',
-      picture: '/img/project.jpg',
+        'This site is my personal portfolio website showcasing my projects, skills, \
+        and experience as a fullstack developer. Still a work in progress, so any feedback is welcome! \n\n \
+        It reflects my pride as an engineer and designer, made with attention \
+        to detail and by hand (using minor AI assistance). \n\n \
+        The initial UI design was done by me using Figma, and the site is built \
+        with Vue 3, TypeScript, Tailwind CSS and the awesome headless UI library ShadCN',
+      link: 'https://github.com/maucastrojm/maucastrojm.github.io',
+      picture: '/img/portfolio.png',
     },
     {
       name: 'Nugget Social',
       stack: 'Nuxt, PrismaORM, PostgreSQL',
       description:
-        'A data analytics platform that provides insights and visualizations \
-        for business intelligence.',
-      link: '',
+        'Self hostable microblogging platform built with Nuxt, PrismaORM and Vue 3. \
+        It features user authentication, content creation, commenting, donations and browsing. \n\n \
+        The platform is designed to be lightweight and easy to deploy on personal servers, while focusing \
+        on customizability and key features.  \n\n \
+        The project is still not public, but you can reach out to me if you are interested in it!',
+      link: null,
       picture: '/img/project.jpg',
     },
     {

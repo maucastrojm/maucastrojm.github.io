@@ -12,17 +12,22 @@ const selectedProject = computed(() => content.projects[selectedIndex.value]);
     </h2>
     <div class="flex pt-16 gap-x-12">
       <div class="flex-1">
-        <div class="pl-2 max-h-64">
+        <div class="pl-2">
           <h3 class="font-semibold">
             {{ selectedProject?.name }}
           </h3>
-          <p class="mt-2">
+          <h4 class="leading-none text-foreground/70!">
+            {{ selectedProject?.stack }}
+          </h4>
+          <p class="mt-4 whitespace-pre-line">
             {{ selectedProject?.description }}
           </p>
         </div>
-        <UiButton variant="outline" class="mt-8" size="lg">
-          {{ content.actions.seeMore }}
-        </UiButton>
+        <a v-if="selectedProject?.link" :href="selectedProject?.link" target="_blank" rel="noopener noreferrer">
+          <UiButton variant="outline" class="mt-8" size="lg">
+            {{ content.actions.seeMore }}
+          </UiButton>
+        </a>
       </div>
       <div class="flex-2 flex flex-wrap gap-4">
         <UiCard

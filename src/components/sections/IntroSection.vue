@@ -27,7 +27,7 @@ const props = withDefaults(defineProps<{ dark?: boolean }>(), { dark: false });
         </p>
       </div>
     </div>
-    <div id="actions" class="flex mt-8">
+    <div id="actions" class="flex mt-8 flex-col">
       <div class="flex-1 z-3">
         <RouterLink to="#contact">
           <UiButton size="lg" variant="default">
