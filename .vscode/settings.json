@@ -1,0 +1,65 @@
+{
+  "eslint.enable": true,
+  "eslint.format.enable": true,
+  "javascript.preferences.importModuleSpecifier": "non-relative",
+  "typescript.preferences.importModuleSpecifier": "non-relative",
+  "tailwindCSS.experimental.classRegex": [
+    [
+      "cva\\(((?:[^()]|\\([^()]*\\))*)\\)",
+      "[\"'`]([^\"'`]*).*?[\"'`]"
+    ],
+    [
+      "cn\\(((?:[^()]|\\([^()]*\\))*)\\)",
+      "(?:'|\"|`)([^']*)(?:'|\"|`)"
+    ],
+    [
+      "clsx\\(((?:[^()]|\\([^()]*\\))*)\\)",
+      "(?:'|\"|`)([^']*)(?:'|\"|`)"
+    ]
+  ],
+  "tailwindCSS.emmetCompletions": true,
+  "tailwindCSS.files.exclude": [
+    "**/.git/**",
+    "**/node_modules/**",
+    "**/.hg/**",
+    "**/.svn/**",
+    "**/vendor/**"
+  ],
+  "editor.rulers": [
+    120
+  ],
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit"
+  },
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features",
+    "editor.formatOnSave": true,
+  },
+  "[vue]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+    "editor.formatOnSaveMode": "file",
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+    "editor.formatOnSaveMode": "file",
+  },
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.patterns": {
+    "*.js": "{*.test.js,*.spec.js,*.d.ts}",
+    "*.ts": "{*.test.ts,*.spec.ts,*.d.ts}",
+    "*.vue": "{*.test.vue,*.spec.vue}",
+    "package.json": "components.d.ts,auto-imports.d.ts,components.json,.eslintrc-auto-import.json,.eslintcache,package-lock.json,tsconfig.json,tsconfig.*.json,nuxt.config.*,vite.config.*,tailwind.config.*,drizzle.config.*,vitest.config.*,eslint.config.*,pnpm*",
+    ".env": ".env.*,env.*,.infisical.json,.npmrc,.nvmrc,.gitignore,.prettierrc,.gitattributes",
+    "README.md": "CHANGELOG.md,CONTRIBUTING.md,LICENSE.md",
+    "Dockerfile": "docker-compose*.yml"
+  },
+  "git.blame.editorDecoration.enabled": true,
+  "git.blame.statusBarItem.enabled": true,
+  "editor.tabSize": 2
+}
