@@ -13,12 +13,12 @@ const props = withDefaults(defineProps<{ dark?: boolean }>(), { dark: false });
           {{ content.aboutMe.name }}
         </h1>
       </div>
-      <h2 class="text-5xl font-light text-primary">
-        {{ content.aboutMe.roles[0] }}
+      <h2 v-if="dark" class="text-5xl font-light text-primary">
+        <FlipWords :words="content.aboutMe.roles" :duration="5000" />
       </h2>
     </div>
     <div class="flex mt-24 justify-end z-4">
-      <div id="about-me" class="max-w-[50%] text-right pt-16">
+      <div id="about-me" class="max-w-[45%] text-right pt-16">
         <h2 class="text-4xl uppercase text-primary">
           {{ content.sections.aboutMe }}
         </h2>
@@ -29,19 +29,29 @@ const props = withDefaults(defineProps<{ dark?: boolean }>(), { dark: false });
     </div>
     <div id="actions" class="flex mt-8">
       <div class="flex-1 z-3">
-        <UiButton size="lg" variant="default">
-          {{ content.actions.contactMe }}
-        </UiButton>
+        <RouterLink to="#contact">
+          <UiButton size="lg" variant="default">
+            {{ content.actions.contactMe }}
+          </UiButton>
+        </RouterLink>
       </div>
       <div class="flex flex-1 gap-4 flex-row-reverse z-4">
-        <UiButton size="lg" variant="outline"> Github </UiButton>
-        <UiButton size="lg" variant="outline"> LinkedIn </UiButton>
-        <UiButton size="lg" variant="outline">
-          <FileTextIcon />
-        </UiButton>
-        <UiButton size="lg" variant="outline">
-          <MailIcon />
-        </UiButton>
+        <a :href="content.links.github" target="_blank" rel="noopener noreferrer">
+          <UiButton as="a" size="lg" variant="outline"> Github </UiButton>
+        </a>
+        <a :href="content.links.linkedin" target="_blank" rel="noopener noreferrer">
+          <UiButton as="a" size="lg" variant="outline"> LinkedIn </UiButton>
+        </a>
+        <a :href="content.links.resume" target="_blank" rel="noopener noreferrer">
+          <UiButton as="a" size="lg" variant="outline">
+            <FileTextIcon />
+          </UiButton>
+        </a>
+        <a :href="content.links.email" target="_blank" rel="noopener noreferrer">
+          <UiButton as="a" size="lg" variant="outline">
+            <MailIcon />
+          </UiButton>
+        </a>
       </div>
     </div>
   </div>

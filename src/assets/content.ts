@@ -13,13 +13,13 @@ export default {
     github: 'https://github.com/maucastrojm',
     linkedin: 'https://www.linkedin.com/in/mcastroj/',
     email: 'mailto:mau.castrojm@gmail.com',
-    resume: '',
+    resume: '/docs/resume.pdf',
   },
   sections: {
     aboutMe: 'About Me',
-    projects: 'Projects Showcase',
+    projects: 'Projects Showcase (WIP)',
     skills: 'Technical Skills',
-    news: 'For You',
+    news: 'For You (WIP)',
     contactMe: 'Contact Me',
   },
   projects: [

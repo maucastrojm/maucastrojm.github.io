@@ -3,6 +3,17 @@ import content from '@/assets/content';
 import { cn } from '@/lib/utils';
 
 const props = withDefaults(defineProps<{ dark?: boolean }>(), { dark: false });
+
+const name = ref('');
+const subject = ref('');
+const message = ref('');
+
+const mailToLink = computed(
+  () =>
+    `${content.links.email}?subject=${encodeURIComponent(
+      `[${name.value}]: ${subject.value}`,
+    )}&body=${encodeURIComponent(message.value)}`,
+);
 </script>
 <template>
   <div class="flex h-screen flex-wrap flex-col pt-40">
@@ -18,22 +29,26 @@ const props = withDefaults(defineProps<{ dark?: boolean }>(), { dark: false });
           <UiFieldGroup class="gap-2">
             <UiField>
               <UiFieldLabel for="name">{{ content.contactForm.name }}</UiFieldLabel>
-              <UiInput id="name" type="text" placeholder="Jane Doe" />
-            </UiField>
-            <UiField>
-              <UiFieldLabel for="email">{{ content.contactForm.email }}</UiFieldLabel>
-              <UiInput id="email" type="email" placeholder="jane.doe@example.com" />
+              <UiInput id="name" v-model="name" type="text" placeholder="Jane Doe" />
             </UiField>
             <UiField>
               <UiFieldLabel for="subject">{{ content.contactForm.subject }}</UiFieldLabel>
-              <UiInput id="subject" type="text" placeholder="Hello, I would like to..." />
+              <UiInput id="subject" v-model="subject" type="text" placeholder="Hello, I would like to..." />
             </UiField>
             <UiField>
               <UiFieldLabel for="message">{{ content.contactForm.message }}</UiFieldLabel>
-              <UiTextarea id="message" placeholder="Write your message here..." rows="4" class="resize-none" />
+              <UiTextarea
+                id="message"
+                v-model="message"
+                placeholder="Write your message here..."
+                rows="4"
+                class="resize-none" />
             </UiField>
-            <UiField orientation="horizontal" class="justify-end mt-4">
-              <UiButton type="submit" size="lg">{{ content.contactForm.send }}</UiButton>
+            <UiField orientation="vertical" class="text-end">
+              <p class="text-foreground/70 text-sm">This will open your email client to send the message.</p>
+              <a :href="mailToLink">
+                <UiButton size="lg">{{ content.contactForm.send }}</UiButton>
+              </a>
             </UiField>
           </UiFieldGroup>
         </UiFieldSet>

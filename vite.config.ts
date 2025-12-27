@@ -8,6 +8,7 @@ import Components from 'unplugin-vue-components/vite';
 import { visualizer } from 'rollup-plugin-visualizer';
 
 export default defineConfig({
+  base: '/azalea-portfolio/',
   plugins: [
     vue(),
     vueDevTools(),
