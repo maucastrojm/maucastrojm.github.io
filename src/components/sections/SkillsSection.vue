@@ -10,7 +10,7 @@ import content from '@/assets/content';
       <div
         v-for="skill in content.skills"
         :key="skill.name"
-        class="p-4 border rounded-lg shadow-md hover:shadow-lg transition-shadow grow min-w-1/4 max-w-1/3">
+        class="p-4 border rounded-lg shadow-md hover:shadow-lg transition-shadow basis-[calc(33%-(--spacing(2)))]">
         <h3 class="font-semibold">
           {{ skill.name }}
         </h3>

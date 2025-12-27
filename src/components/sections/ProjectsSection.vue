@@ -29,11 +29,11 @@ const selectedProject = computed(() => content.projects[selectedIndex.value]);
           </UiButton>
         </a>
       </div>
-      <div class="flex-2 flex flex-wrap gap-4">
+      <div class="flex-2 flex flex-wrap gap-4 items-start">
         <UiCard
           v-for="(project, index) in content.projects"
           :key="project.name"
-          class="basis-[calc(50%-(--spacing(2)))] cursor-pointer bg-transparent backdrop-blur-[2px]"
+          class="basis-[calc(50%-(--spacing(2)))] shrink cursor-pointer bg-transparent backdrop-blur-[2px]"
           :class="
             cn({
               'border-primary/30 bg-white/5': selectedIndex === index,

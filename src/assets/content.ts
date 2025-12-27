@@ -48,30 +48,12 @@ export default {
       link: null,
       picture: '/img/project.jpg',
     },
-    {
-      name: 'Nugget Social',
-      stack: 'Nuxt, PrismaORM, PostgreSQL',
-      description:
-        'A data analytics platform that provides insights and visualizations \
-        for business intelligence.',
-      link: '',
-      picture: '/img/project.jpg',
-    },
-    {
-      name: 'Nugget Social',
-      stack: 'Nuxt, PrismaORM, PostgreSQL',
-      description:
-        'A data analytics platform that provides insights and visualizations \
-        for business intelligence.',
-      link: '',
-      picture: '/img/project.jpg',
-    },
   ],
   skills: [
-    { name: 'JavaScript', level: 'Advanced' },
     { name: 'TypeScript', level: 'Advanced' },
-    { name: 'Vue.js', level: 'Advanced' },
-    { name: 'Node.js', level: 'Intermediate' },
+    { name: 'Vue', level: 'Advanced' },
+    { name: 'React', level: 'Advanced' },
+    { name: 'ASP.NET', level: 'Advanced' },
     { name: 'Python', level: 'Intermediate' },
   ],
   actions: {
